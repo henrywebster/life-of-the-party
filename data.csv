@@ -1,0 +1,9 @@
+title,source,description,type,action,effect
+Jay Gatsby,The Great Gatsby,"If personality is an unbroken series of successful gestures, then there was something gorgeous about him, some heightened senstivity to the promises of life, as if he were related to one of those intricate machines that register earthquakes ten thousand miles away.",guest
+Daisy Buchanan,The Great Gatsby,"Her eyes fell on Jordan and me with a sort of appeal, as though she realized at last what she was doing - and as though she had never, all along, intended doing anything at all.",guest
+Anthony Cade,The Secret of Chimneys,"If there’s any trouble brewing, Anthony Cade is sure to be in it sooner or later, I know that. You’ve an absolute instinct for rows—and the nine lives of a cat.",guest
+Virginia Revel,The Secret of Chimneys,"We need some one with savoir faire, poise, knowledge of the world—Ah, of course, the very person. My cousin Virginia.",guest
+Sleepy Time Gal,w. Joseph R. Alden & Raymond B. Egan m. Ange Lorenzo & Richard A. Whiting,Song,scenario,SKIP,Skip this turn
+Ditched,The Great Gatsby,"In the ditch beside the road, right side up but violently shorn of one wheel, rested a new coupe which had left Gatsby's drive not two minutes before.",scenario,EXIT,"Choose one of your active guests to make a drunken, vehicular exit from the party."
+Pistol,The Secret of Chimneys,"Anthony took out his handkerchief and wound it round his hand, then hepicked up the pistol.",scenario,TARGET_MURDER,"Player may kill the Active Guest of any other Player."
+Orderi di Danilo,The Great Gatsby,"Then came the war, old sport. It was a great relief and I tried very hard to die but I seemed to bear an enchanted life.",scenario,PROTECT_GUEST,"You're famous for cheating death. Ignore the next scenario to kill one of your active guests."

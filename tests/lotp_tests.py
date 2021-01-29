@@ -1,6 +1,6 @@
 import random
 import unittest
-from lotp.lotp import Guest, Scenario, Player, Deck, Game, Rules
+from lotp.objects import Guest, Scenario, Player, Deck, Game, Rules, ScenarioEvent
 
 class TestCard(unittest.TestCase):
 
@@ -72,6 +72,16 @@ class TestDeck(unittest.TestCase):
 		deck.place(guest)
 		self.assertEqual(1, deck.size())
 		self.assertEqual(guest, deck.draw())
+
+class TestScenarioEvent(unittest.TestCase):
+	def test_scenario_event(self):
+		guest_1 = Guest("Example Guest", "An excerpt", "This guest is an example")
+		guest_2 = Guest("Example Guest", "An excerpt", "This guest is an example")
+		guests = [guest_1, guest_2]
+		remove_guest_func = lambda guests: guests.pop()
+		remove_guest_event = ScenarioEvent(remove_guest_func)
+		remove_guest_event.run(guests)
+		self.assertEqual(1, len(guests))
 
 class TestGame(unittest.TestCase):
 
