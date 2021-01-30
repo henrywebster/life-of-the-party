@@ -3,7 +3,20 @@ Jay Gatsby,The Great Gatsby,"If personality is an unbroken series of successful 
 Daisy Buchanan,The Great Gatsby,"Her eyes fell on Jordan and me with a sort of appeal, as though she realized at last what she was doing - and as though she had never, all along, intended doing anything at all.",guest
 Anthony Cade,The Secret of Chimneys,"If there’s any trouble brewing, Anthony Cade is sure to be in it sooner or later, I know that. You’ve an absolute instinct for rows—and the nine lives of a cat.",guest
 Virginia Revel,The Secret of Chimneys,"We need some one with savoir faire, poise, knowledge of the world—Ah, of course, the very person. My cousin Virginia.",guest
+Jordan Baker,The Great Gatsby,"They'll keep out of my way. It takes two to make an accident.",guest
+George B. Wilson,The Great Gatsby,"I spoke to her. I told her she might fool me but she couldn't fool God. God sees everything.",guest
+Meyer Wolfshiem,The Great Gatsby,"When a man gets killed I never like to get mixed up in it in any way. I keep out.",guest
+Myrtle Wilson,The Great Gatsby,"Her face, above a spotted dess of dark blue crepe-de-chine, contained no facet or glean of beauty but there was an immediately perceptible vitality about her as if the nerves of her body were continually smouldering.",guest
+Nick Carraway,The Great Gatsby,"Every one suspects himself of at least one of the cardinal virtues, and this is mine: I am one of the few honest people that I have ever known.",guest
+Tom Buchanan,The Great Gatsby,"He, among various physical accomplishments, had been one of the most powerful ends that ever played football at New Haven - a national figure in a way, one of those men who reach such an acute limited success at twenty-one that everything afterward savors anti-climax.",guest
+Bill Eversleigh,The Secret of Chimneys,"He was a good cricketer and a scratch golfer, he had pleasant manners, and an amiable disposition, but his position in the Foreign Office had been gained, not by brains, but by good connexions.",guest
+George Lomax,The Secret of Chimneys,"A robust man, George Lomax, inclined to embonpoint, with a red face and protuberant eyes, and an immense sense of his own importance.",guest
+Jimmy McGrath,The Secret of Chimneys,"The sort of man one read about in books, who probably kept a saloon. Interesting though. After all, that was what one came abroad for—to see all these peculiar things one read about in books.",guest
+King Victor,The Secret of Chimneys,"He’s a crook, Jimmy. The most notorious jewel thief in the world. A fantastic, daring fellow, not to be daunted by anything.",guest
+Lord Caterham,The Secret of Chimneys,"The principal misfortune of Lord Caterham’s life was to have succeeded his brother, the eighth marquis, four years ago. For the previous Lord Caterham had been a man of mark, a household word all over England.",guest
+Clarissa Dalloway,Mrs. Dalloway,"For, said Sally, Clarissa was at heart a snob - on had to admit it, a snob.",guest
 Sleepy Time Gal,w. Joseph R. Alden & Raymond B. Egan m. Ange Lorenzo & Richard A. Whiting,Song,scenario,SKIP,Skip this turn
 Ditched,The Great Gatsby,"In the ditch beside the road, right side up but violently shorn of one wheel, rested a new coupe which had left Gatsby's drive not two minutes before.",scenario,EXIT,"Choose one of your active guests to make a drunken, vehicular exit from the party."
 Pistol,The Secret of Chimneys,"Anthony took out his handkerchief and wound it round his hand, then hepicked up the pistol.",scenario,TARGET_MURDER,"Player may kill the Active Guest of any other Player."
 Orderi di Danilo,The Great Gatsby,"Then came the war, old sport. It was a great relief and I tried very hard to die but I seemed to bear an enchanted life.",scenario,PROTECT_GUEST,"You're famous for cheating death. Ignore the next scenario to kill one of your active guests."
+Too Many Rings Around Rosie,song,"Tommy, Andy, Harold, Joe, Ate my candy then would go",scenario,REVERSE,"Reverse turn order."

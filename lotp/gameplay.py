@@ -1,5 +1,7 @@
 import random
+import collections
 
+DeckPair = collections.namedtuple("DeckPair", ["active", "discard"])
 
 # TODO: define a rule constant or config file?
 class Rules:
@@ -12,6 +14,7 @@ class Guest:
 		self.quotation = quotation
 		self.description = description
 		self.killable = True
+		self.scenario = None
 	
 	def __str__(self):
 		return "\t{} ({}) - {}".format(self.title, self.description, self.quotation)
@@ -24,7 +27,7 @@ class Scenario:
 		self.action = action
 	
 	def act(self, player, game):
-		self.action(player, game)
+		self.action(player, self, game)
 
 	def __str__(self):
 		return "\t{} - {}\n\t{}".format(self.title, self.quotation, self.description)
@@ -35,13 +38,22 @@ class Player:
 		self.active = True
 		self.skip = False
 		self.guests = []
-		self.scenarios = []
 		self.active_guests = []
 
-	def add_guest(self, guest):
-		self.guests.append(guest)
+class ComputerPlayer(Player):
+	def __init__(self, name):
+		super().__init__(name)
 
-	# need computer version of this
+	def turn(self):
+		pass
+
+	def choose(self, guests):
+		return random.choice(guests)
+
+class HumanPlayer(Player):
+	def __init__(self, name):
+		super().__init__(name)
+
 	def turn(self):
 		while True:
 			print("(d) draw, (h) see hand, (a) see active guests")
@@ -58,7 +70,6 @@ class Player:
 			else:
 				assert False
 
-	# TODO: need computer version of this
 	def choose(self, guests):
 		print("Choose guest")
 		for i in range(len(guests)):
@@ -87,13 +98,6 @@ class Deck:
 	def shuffle(self):
 		random.shuffle(self.cards)
 
-class ScenarioEvent:
-	def __init__(self, action):
-		self.action = action
-
-	def run(self, guests):
-		self.action(guests)
-
 class Game:
 	def __init__(self, guests, scenarios, players, rules):
 		self.scenario_deck_active = Deck(scenarios)
@@ -107,7 +111,7 @@ class Game:
 		for player in self.players:
 			for _ in range(self.rules.guest_hand_size):
 				guest = self.guest_deck.draw()
-				player.add_guest(guest)
+				player.guests.append(guest)
 
 	def setup(self):
 		self.guest_deck.shuffle()
@@ -122,40 +126,72 @@ class Game:
 
 
 	def round(self):
-		for player in self.players:
-			if not player.active:
-				continue
+		
+		player = self.players.pop(0)
 
-			# have two implementations: computer and human player
-			#print(player.name)
-			if not player.active_guests:
-				print("{} has no active guests and must play one".format(player.name))
-				guest = player.choose(player.guests)
-				player.guests.remove(guest)
-				player.active_guests.append(guest)
-			else:
-				# change to status?
-				player.turn()
-				scenario = self.scenario_deck_active.draw()
-				print(scenario)
-				scenario.act(player, self)
+		if not player.active_guests:
+			print("{} has no active guests and must play one".format(player.name))
+			guest = player.choose(player.guests)
+			player.guests.remove(guest)
+			player.active_guests.append(guest)
+		else:
+			# change to status?
+			player.turn()
+			scenario = self.scenario_deck_active.draw()
+			print(scenario)
+			scenario.act(player, self)
 
-				# possible this is not done
-				self.scenario_deck_inactive.place(scenario)
+			if self.scenario_deck_active.size() == 0:
+				self.scenario_deck_active, self.scenario_deck_inactive = self.scenario_deck_inactive, self.scenario_deck_active
+				self.scenario_deck_active.shuffle()
 
-				# TODO: unit test this
-				if self.scenario_deck_active.size() == 0:
-					self.scenario_deck_active, self.scenario_deck_inactive = self.scenario_deck_inactive, self.scenario_deck_active
-					self.scenario_deck_active.shuffle()
+		self.players.append(player)
+		# check if no one has cards left
+		print("TURN ORDER")
+		removals = []
+		for _player in self.players:
+			print(_player.name)
+			if not _player.guests and not _player.active_guests:
+				removals.append(_player)
 
-			# check if no one has cards left
-			for _player in self.players:
-				if not _player.guests and not _player.active_guests:
-					# player is taken out of game
-					_player.active = False
+		for _player in removals:
+			print("{} has been eliminated!".format(_player.name))
+			self.players.remove(_player)
 
-
-		# TODO: clean up players after?
+#		for player in self.players:
+#			if not player.active:
+#				continue
+#
+#			if not player.active_guests:
+#				print("{} has no active guests and must play one".format(player.name))
+#				guest = player.choose(player.guests)
+#				player.guests.remove(guest)
+#				player.active_guests.append(guest)
+#			else:
+#				# change to status?
+#				player.turn()
+#				scenario = self.scenario_deck_active.draw()
+#				print(scenario)
+#				scenario.act(player, self)
+#
+#				# possible this is not done
+#				#self.scenario_deck_inactive.place(scenario)
+#
+#				# Have deck group object, with swap, active, inactive
+#
+#				# TODO: unit test this
+#				if self.scenario_deck_active.size() == 0:
+#					self.scenario_deck_active, self.scenario_deck_inactive = self.scenario_deck_inactive, self.scenario_deck_active
+#					self.scenario_deck_active.shuffle()
+#
+#			# check if no one has cards left
+#			for _player in self.players:
+#				if not _player.guests and not _player.active_guests:
+#					# player is taken out of game
+#					_player.active = False
+#
+#
+#		# TODO: clean up players after?
 
 
 
